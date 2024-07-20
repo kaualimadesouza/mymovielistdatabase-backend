@@ -10,7 +10,7 @@
 [AWS_BADGE]:https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
 
 
-<h1 align="center" style="font-weight: bold;">MyMovieListDatabase 💻</h1>
+<h1 align="center" style="font-weight: bold;">MyMovieListDatabase - Backend 💻</h1>
 
 <p align="center">
  <a href="#about">Sobre</a> • 
