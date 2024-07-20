@@ -7,12 +7,15 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
+
 	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>movie-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>movie-api</name>
 	<description>API para armazenamento de filmes</description>
+
 	<url/>
 	<licenses>
 		<license/>

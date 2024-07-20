@@ -28,4 +28,14 @@ public class Movie {
 
     @Column(name = "imdbid")
     private String imdbId;
+
+    public Movie(String title, String description, String imgURL, String genre, Integer rating, Integer movieYear, String imdbId) {
+        this.title = title;
+        this.description = description;
+        this.imgURL = imgURL;
+        this.genre = genre;
+        this.rating = rating;
+        this.movieYear = movieYear;
+        this.imdbId = imdbId;
+    }
 }

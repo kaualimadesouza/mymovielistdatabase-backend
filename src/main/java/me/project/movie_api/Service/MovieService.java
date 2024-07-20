@@ -5,8 +5,12 @@ import me.project.movie_api.domain.Movie;
 import me.project.movie_api.domain.MovieRequestDTO;
 import me.project.movie_api.domain.MovieResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,7 +28,7 @@ public class MovieService {
 
     // GET: FILME POR ID : UUID
     public Optional<MovieResponseDTO> getMovie(UUID id) {
-        if(movieRepository.existsById(id)) {
+        if (movieRepository.existsById(id)) {
             return movieRepository.findById(id).map(movie -> new MovieResponseDTO(movie));
         } else {
             throw new RuntimeException("Movie not found with id " + id);
@@ -49,7 +53,7 @@ public class MovieService {
     }
 
     public String deleteMovie(UUID id) {
-        if(movieRepository.existsById(id)) {
+        if (movieRepository.existsById(id)) {
             movieRepository.deleteById(id);
             return "Deletado com sucesso.";
         }
@@ -70,5 +74,25 @@ public class MovieService {
         } else {
             throw new RuntimeException("Movie not found with id " + id);
         }
+    }
+
+    public void insertMovies(List<MovieRequestDTO> movies) {
+        List<Movie> moviesEntity = movies.stream().map(movie ->
+                new Movie(movie.title(), movie.description(), movie.imgURL(), movie.genre(), movie.rating(), movie.movieYear(), movie.imdbId())
+        ).toList();
+        movieRepository.saveAll(moviesEntity);
+    }
+
+    public List<MovieResponseDTO> getMoviesPageable(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Movie> allMovies = movieRepository.findAll(pageable);
+        return allMovies.map(MovieResponseDTO::new).toList();
+    }
+
+    public List<MovieResponseDTO> getMoviesByMovieName(String movie, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        String movieName = movie.replace("_", " ");
+        Page<Movie> allMovies = movieRepository.findByMovie(movieName, pageable);
+        return allMovies.stream().map(MovieResponseDTO::new).toList();
     }
 }
