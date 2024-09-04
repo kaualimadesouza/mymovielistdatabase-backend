@@ -23,10 +23,6 @@
 
 Aplicação backend desenvolvida com Java e Spring Framework, que oferece todas as operações CRUD (GET, POST, DELETE). Esta API autoral se conecta a um banco de dados PostgreSQL para armazenar dados dos filmes. Este README fornece instruções para instalar e executar a aplicação localmente, mas ela também está disponível em um EC2 da AWS no link abaixo.
 
-EC2: [http://44.195.40.138:8080/{endpoint}](http://44.195.40.138:8080/movies)
-
-[Website on Vercel](https://mymovielistdatabase-frontend-7r9wxqdks-kauas-projects-6ea027af.vercel.app/)
-
 [Frontend Repository](https://github.com/kaualimadesouza/mymovielistdatabase-backend.git)
 
 <h3>Tecnologias</h3>
